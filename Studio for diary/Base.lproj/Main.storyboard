@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RIA-Hr-ncS">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Overview-->
+        <scene sceneID="Yjz-Do-728">
+            <objects>
+                <viewController id="OoB-gg-jSG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5w1-SA-2kN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mkf-ct-9SK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Overview" id="THh-xV-HJb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tt4-G0-VnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1159" y="693"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="6sR-0j-OU1">
+            <objects>
+                <viewController id="xJH-gQ-DLb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qUb-9p-F4t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.92336606980000002" green="0.0077839111230000001" blue="0.24493804629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="BMF-Wx-6sL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" id="IAk-GL-Hjy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGb-af-Yjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433" y="5"/>
+        </scene>
+        <!--Custom Tab Bar View Controller-->
+        <scene sceneID="8Bb-Vx-n7d">
+            <objects>
+                <tabBarController id="RIA-Hr-ncS" customClass="CustomTabBarViewController" customModule="Studio_for_diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TkJ-6o-Qo8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aqs-by-Ihp" kind="relationship" relationship="viewControllers" id="77P-cc-2FF"/>
+                        <segue destination="xJH-gQ-DLb" kind="relationship" relationship="viewControllers" id="q1a-vW-yka"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JvB-1s-XyB"/>
+                        <segue destination="OoB-gg-jSG" kind="relationship" relationship="viewControllers" id="Ncp-ih-mkR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMv-N0-YTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1396" y="-331"/>
+        </scene>
+        <!--My Diary-->
+        <scene sceneID="OKM-So-ZiT">
+            <objects>
+                <tableViewController id="HqG-4t-oqJ" customClass="TableDiaryController" customModule="Studio_for_diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vcR-nl-r4X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="J9F-XZ-NXS" detailTextLabel="or2-Jg-lfF" style="IBUITableViewCellStyleSubtitle" id="O3g-Or-idn">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O3g-Or-idn" id="Zei-BD-EHB">
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J9F-XZ-NXS">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="or2-Jg-lfF">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HqG-4t-oqJ" id="RZ5-HR-SaH"/>
+                            <outlet property="delegate" destination="HqG-4t-oqJ" id="QIf-Np-4RX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Diary" id="lgw-mE-Pi5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3nq-lZ-l6s">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Og2-lt-WdJ" kind="show" id="gGg-ul-pQT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="vcR-nl-r4X" id="Sda-AE-BYF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GSY-JM-fw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="-753"/>
+        </scene>
+        <!--"today"-->
+        <scene sceneID="iHU-1e-p0O">
+            <objects>
+                <viewController id="Og2-lt-WdJ" customClass="AddNoteController" customModule="Studio_for_diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="emD-aP-Jbc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toR-Jd-IAJ">
+                                <rect key="frame" x="143" y="182" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveNote:" destination="Og2-lt-WdJ" eventType="touchUpInside" id="czG-WG-4kf"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-nn-OWR">
+                                <rect key="frame" x="0.0" y="64" width="320" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="EwG-Eb-5GW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" button="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="toR-Jd-IAJ" firstAttribute="centerX" secondItem="emD-aP-Jbc" secondAttribute="centerX" id="Bpf-Zy-PNH"/>
+                            <constraint firstItem="yHJ-nn-OWR" firstAttribute="leading" secondItem="emD-aP-Jbc" secondAttribute="leading" id="J8G-uV-umL"/>
+                            <constraint firstItem="toR-Jd-IAJ" firstAttribute="centerX" secondItem="yHJ-nn-OWR" secondAttribute="centerX" id="Wj2-ma-Np1"/>
+                            <constraint firstItem="yHJ-nn-OWR" firstAttribute="top" secondItem="5EN-M7-78e" secondAttribute="top" id="dWT-51-cOo"/>
+                            <constraint firstItem="toR-Jd-IAJ" firstAttribute="top" secondItem="yHJ-nn-OWR" secondAttribute="bottom" constant="8" symbolic="YES" id="qOM-8j-NCh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5EN-M7-78e"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="&quot;today&quot;" leftItemsSupplementBackButton="YES" id="qbb-yW-6Fd">
+                        <barButtonItem key="backBarButtonItem" title="Done" id="2y2-iV-Hdy"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="noteTextView" destination="yHJ-nn-OWR" id="ZD9-HF-fy3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="biI-6s-zPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1267.5" y="-754.22535211267609"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="jR5-Mt-Y0H">
+            <objects>
+                <navigationController id="aqs-by-Ihp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Notes" id="bEX-UC-QfS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uud-JG-WLd">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.084552486960000006" green="0.51588283089999998" blue="0.92336606980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HqG-4t-oqJ" kind="relationship" relationship="rootViewController" id="iB1-zT-u9z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPR-SW-33J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-434" y="-753"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Studio_for_diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="rFM-YS-Eqf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433" y="693"/>
+        </scene>
+    </scenes>
+</document>
