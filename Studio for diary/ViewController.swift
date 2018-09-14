@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import CoreData
+import CoreLocation
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //getCurrentDateTime()
+        
+    }
+    
+    func getCurrentDateTime() {
+        
+       let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        let str = formatter.string(from: Date())
+        print(str)
+        
     }
 
 

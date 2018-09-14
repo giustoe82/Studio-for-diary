@@ -9,36 +9,48 @@
 import UIKit
 
 class AddNoteController: UIViewController, UITextViewDelegate {
+    
+    
 
     @IBOutlet weak var noteTextView: UITextView!
     
     @IBAction func saveNote(_ sender: Any) {
         
         let notesObject = UserDefaults.standard.object(forKey: "notes")
+        let datesObject = UserDefaults.standard.object(forKey: "dates")
         
         var notes:[String]
+        var dates:[String]
         
-        if let tempNotes = notesObject as? [String] {
+        if noteTextView.text != "Your new note here ..." {
+        
+            if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
             
             notes = tempNotes
+            dates = tempDates
             
             notes.append(noteTextView.text!)
+            dates.append(getCurrentDateTime())
             
         } else {
             
             notes = [noteTextView.text!]
+            dates = [getCurrentDateTime()]
         }
         
         UserDefaults.standard.set(notes, forKey: "notes")
+        UserDefaults.standard.set(dates, forKey: "dates")
+        noteTextView.text = ""
+    }
     }
    
     
    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.navigationItem.backBarButtonItem!.title = "Back"
+        self.navigationItem.title = getCurrentDateTime()
         
         noteTextView.delegate = self
         noteTextView.text = "Your new note here ..."
@@ -59,6 +71,18 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             noteTextView.text = "Your new note here ..."
             noteTextView.textColor = UIColor.lightGray
         }
+    }
+    
+    func getCurrentDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        //formatter.timeStyle = .short
+        
+        let str = formatter.string(from: Date())
+        
+        return str
+        
+        
     }
 
     /*

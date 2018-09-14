@@ -13,17 +13,18 @@ class TableDiaryController: UITableViewController {
     @IBOutlet var table: UITableView!
     
     var notes:[String] = []
+    var dates:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let notesObject = UserDefaults.standard.object(forKey: "notes")
+        let datesObject = UserDefaults.standard.object(forKey: "dates")
         
-        
-        
-        if let tempNotes = notesObject as? [String] {
+        if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
             
             notes = tempNotes
+            dates = tempDates
             
             
         }
@@ -33,10 +34,12 @@ class TableDiaryController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let notesObject = UserDefaults.standard.object(forKey: "notes")
+        let datesObject = UserDefaults.standard.object(forKey: "dates")
         
-        if let tempNotes = notesObject as? [String] {
+        if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
             
             notes = tempNotes
+            dates = tempDates
         }
         table.reloadData()
     }
@@ -59,7 +62,7 @@ class TableDiaryController: UITableViewController {
 
         // Configure the cell...
         
-        cell.textLabel?.text = String(indexPath.row + 1)
+        cell.textLabel?.text = dates[indexPath.row]
         
         cell.detailTextLabel?.text = notes[indexPath.row]
 
@@ -71,10 +74,12 @@ class TableDiaryController: UITableViewController {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
             notes.remove(at: indexPath.row)
+            dates.remove(at: indexPath.row)
             
             table.reloadData()
             
             UserDefaults.standard.set(notes, forKey: "notes")
+            UserDefaults.standard.set(dates, forKey: "dates")
             
         }
     }

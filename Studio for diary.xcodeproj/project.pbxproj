@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A501CC52214AFDBF004C432C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501CC51214AFDBF004C432C /* MapViewController.swift */; };
+		A501CC55214B0169004C432C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC54214B0169004C432C /* CoreLocation.framework */; };
+		A501CC57214B0180004C432C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC56214B0180004C432C /* CoreMotion.framework */; };
+		A501CC59214B018C004C432C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC58214B018C004C432C /* CoreData.framework */; };
 		A5136844214A656600CA3612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5136843214A656600CA3612 /* AppDelegate.swift */; };
 		A5136846214A656600CA3612 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5136845214A656600CA3612 /* ViewController.swift */; };
 		A5136849214A656600CA3612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5136847214A656600CA3612 /* Main.storyboard */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A501CC51214AFDBF004C432C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A501CC54214B0169004C432C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A501CC56214B0180004C432C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A501CC58214B018C004C432C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A5136840214A656600CA3612 /* Studio for diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio for diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5136843214A656600CA3612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5136845214A656600CA3612 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,17 +43,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A501CC59214B018C004C432C /* CoreData.framework in Frameworks */,
+				A501CC57214B0180004C432C /* CoreMotion.framework in Frameworks */,
+				A501CC55214B0169004C432C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A501CC53214B0168004C432C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A501CC58214B018C004C432C /* CoreData.framework */,
+				A501CC56214B0180004C432C /* CoreMotion.framework */,
+				A501CC54214B0169004C432C /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A5136837214A656600CA3612 = {
 			isa = PBXGroup;
 			children = (
 				A5136842214A656600CA3612 /* Studio for diary */,
 				A5136841214A656600CA3612 /* Products */,
+				A501CC53214B0168004C432C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +91,7 @@
 				A5AF69C5214A79B2007DAD48 /* CustomTabBarViewController.swift */,
 				A5AF69CD214AB7D9007DAD48 /* TableDiaryController.swift */,
 				A5AF69CF214AC1DF007DAD48 /* AddNoteController.swift */,
+				A501CC51214AFDBF004C432C /* MapViewController.swift */,
 			);
 			path = "Studio for diary";
 			sourceTree = "<group>";
@@ -145,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5136846214A656600CA3612 /* ViewController.swift in Sources */,
+				A501CC52214AFDBF004C432C /* MapViewController.swift in Sources */,
 				A5AF69D0214AC1DF007DAD48 /* AddNoteController.swift in Sources */,
 				A5136844214A656600CA3612 /* AppDelegate.swift in Sources */,
 				A5AF69CE214AB7D9007DAD48 /* TableDiaryController.swift in Sources */,
