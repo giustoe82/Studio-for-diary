@@ -7,41 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class AddNoteController: UIViewController, UITextViewDelegate {
     
+    var address = ""
+    let uid = Auth.auth().currentUser?.uid
     
-
     @IBOutlet weak var noteTextView: UITextView!
     
-    @IBAction func saveNote(_ sender: Any) {
+    //@IBAction func saveNote(_ sender: Any) {
         
-        let notesObject = UserDefaults.standard.object(forKey: "notes")
-        let datesObject = UserDefaults.standard.object(forKey: "dates")
+    override func viewDidDisappear(_ animated: Bool) {
+    
+        let db = Firestore.firestore()
         
-        var notes:[String]
-        var dates:[String]
+        let dataDict: [String: Any] = [
+            "date": getCurrentDate() ,
+            "time": getCurrentTime() ,
+            "comment": noteTextView.text ?? "",
+            "timestamp": NSDate().timeIntervalSince1970,
+            "address": address,
+            "uID": uid
+        ]
         
-        if noteTextView.text != "Your new note here ..." {
         
-            if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
-            
-            notes = tempNotes
-            dates = tempDates
-            
-            notes.append(noteTextView.text!)
-            dates.append(getCurrentDateTime())
-            
-        } else {
-            
-            notes = [noteTextView.text!]
-            dates = [getCurrentDateTime()]
+        db.collection("Entries").document().setData(dataDict) { err in
+            if let err = err {
+                print("Error: \(err)")
+            } else {
+                print("Dokument sparat")
+            }
         }
+    
         
-        UserDefaults.standard.set(notes, forKey: "notes")
-        UserDefaults.standard.set(dates, forKey: "dates")
-        noteTextView.text = ""
-    }
+        
     }
    
     
@@ -49,9 +49,7 @@ class AddNoteController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationItem.backBarButtonItem!.title = "Back"
-        self.navigationItem.title = getCurrentDateTime()
-        
+        self.navigationItem.title = getCurrentDate()
         noteTextView.delegate = self
         noteTextView.text = "Your new note here ..."
         noteTextView.textColor = UIColor.lightGray
@@ -73,16 +71,38 @@ class AddNoteController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func getCurrentDateTime() -> String {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func getCurrentDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        //formatter.timeStyle = .short
-        
         let str = formatter.string(from: Date())
-        
         return str
-        
-        
+    }
+    
+    func getCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        let str = formatter.string(from: Date())
+        return str
+    }
+    
+    func getTimeStamp() -> String {
+        let formatter = DateFormatter()
+        let now = Date()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateString = formatter.string(from: now)
+        return dateString
     }
 
     /*

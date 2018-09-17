@@ -7,42 +7,39 @@
 //
 
 import UIKit
+import Firebase
 
-class TableDiaryController: UITableViewController {
+class TableDiaryController: UITableViewController, DataDelegate {
     
     @IBOutlet var table: UITableView!
     
-    var notes:[String] = []
-    var dates:[String] = []
+    
+    var dataManager = DBManager()
+    
+    //@IBOutlet weak var loadActivity: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notesObject = UserDefaults.standard.object(forKey: "notes")
-        let datesObject = UserDefaults.standard.object(forKey: "dates")
-        
-        if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
-            
-            notes = tempNotes
-            dates = tempDates
-            
-            
-        }
-        
+        dataManager.dataDel = self
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let notesObject = UserDefaults.standard.object(forKey: "notes")
-        let datesObject = UserDefaults.standard.object(forKey: "dates")
-        
-        if let tempNotes = notesObject as? [String], let tempDates = datesObject as? [String] {
-            
-            notes = tempNotes
-            dates = tempDates
-        }
-        table.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        loadDB()
     }
+    
+    func loadEntries() {
+        table.reloadData()
+        //loadActivity.isHidden = true
+    }
+    
+    func loadDB() {
+        dataManager.EntriesArray.removeAll()
+        dataManager.sortedEntries.removeAll()
+        dataManager.loadDB()
+    }
+    
 
     // MARK: - Table view data source
 
@@ -53,18 +50,20 @@ class TableDiaryController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes.count
+        //return notes.count
+        return dataManager.sortedEntries.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
 
-        // Configure the cell...
+        let row = indexPath.row
         
-        cell.textLabel?.text = dates[indexPath.row]
+        let entryCell = dataManager.sortedEntries[row]
+        cell.textLabel?.text = entryCell.date
         
-        cell.detailTextLabel?.text = notes[indexPath.row]
+        cell.detailTextLabel?.text = entryCell.comment
 
         return cell
     }
@@ -73,15 +72,19 @@ class TableDiaryController: UITableViewController {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
-            notes.remove(at: indexPath.row)
-            dates.remove(at: indexPath.row)
+            //dataManager.EntriesArray.remove(at: indexPath.row)
+            
             
             table.reloadData()
             
-            UserDefaults.standard.set(notes, forKey: "notes")
-            UserDefaults.standard.set(dates, forKey: "dates")
             
         }
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        try? Auth.auth().signOut()
+        tabBarController?.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "uid")
     }
     
 

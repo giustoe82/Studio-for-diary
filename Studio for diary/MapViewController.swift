@@ -8,26 +8,47 @@
 
 import UIKit
 import MapKit
+import Firebase
 
-class MapViewController: UIViewController {
+
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var myMap: MKMapView!
     
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let coord = manager.location?.coordinate {
+            
+            let center = CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+            myMap.setRegion(region, animated: true)
+            myMap.removeAnnotations(myMap.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = center
+            annotation.title = "Your location"
+            myMap.addAnnotation(annotation)
+        }
     }
-    */
-
+    
+    
+    @IBAction func logOut(_ sender: Any) {
+        try? Auth.auth().signOut()
+        tabBarController?.dismiss(animated: true, completion: nil)
+    }
+    
 }
