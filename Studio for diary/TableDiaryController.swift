@@ -8,6 +8,15 @@
 
 import UIKit
 
+
+
+
+
+class HeadlineTableWievCell : UITableViewCell {
+    
+    
+}
+
 class TableDiaryController: UITableViewController {
     
     @IBOutlet var table: UITableView!
@@ -69,9 +78,9 @@ class TableDiaryController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle , forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             
             notes.remove(at: indexPath.row)
             dates.remove(at: indexPath.row)
@@ -82,6 +91,19 @@ class TableDiaryController: UITableViewController {
             UserDefaults.standard.set(dates, forKey: "dates")
             
         }
+        
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
 

@@ -7,26 +7,18 @@
 //
 
 import UIKit
-import CoreData
-import CoreLocation
+import Firebase
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getCurrentDateTime()
+       
         
     }
     
-    func getCurrentDateTime() {
-        
-       let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        let str = formatter.string(from: Date())
-        print(str)
-        
-    }
+   
+    
 
 
 }

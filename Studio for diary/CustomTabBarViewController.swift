@@ -15,29 +15,29 @@ class CustomTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.darkGray], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.darkGray], for: .normal)
         
-        let selectedImage1 = UIImage(named: "add-white")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        let deSelectedImage1 = UIImage(named: "add")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let selectedImage1 = UIImage(named: "add-white")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        let deSelectedImage1 = UIImage(named: "add")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         myTabBarItem = self.tabBar.items![0]
         myTabBarItem.image = deSelectedImage1
         myTabBarItem.selectedImage = selectedImage1
         
-        let selectedImage2 = UIImage(named: "calendar-white")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        let deSelectedImage2 = UIImage(named: "calendar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let selectedImage2 = UIImage(named: "calendar-white")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        let deSelectedImage2 = UIImage(named: "calendar")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         myTabBarItem = self.tabBar.items![1]
         myTabBarItem.image = deSelectedImage2
         myTabBarItem.selectedImage = selectedImage2
         
-        let selectedImage3 = UIImage(named: "map-white")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        let deSelectedImage3 = UIImage(named: "map")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let selectedImage3 = UIImage(named: "map-white")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        let deSelectedImage3 = UIImage(named: "map")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         myTabBarItem = self.tabBar.items![2]
         myTabBarItem.image = deSelectedImage3
         myTabBarItem.selectedImage = selectedImage3
         
-        let selectedImage4 = UIImage(named: "list-white")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        let deSelectedImage4 = UIImage(named: "list")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let selectedImage4 = UIImage(named: "list-white")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        let deSelectedImage4 = UIImage(named: "list")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         myTabBarItem = self.tabBar.items![3]
         myTabBarItem.image = deSelectedImage4
         myTabBarItem.selectedImage = selectedImage4

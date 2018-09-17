@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1481901252D302860DA04799 /* Pods_Studio_for_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F30406B94D8EE211C47F7F /* Pods_Studio_for_diary.framework */; };
+		2B0BA0DA214D039400B71B54 /* DiaryFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0BA0D9214D039400B71B54 /* DiaryFB.swift */; };
+		2B0BA0DC214D188200B71B54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B0BA0DB214D188200B71B54 /* GoogleService-Info.plist */; };
+		2B197452214F062500555DCB /* DiaryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B197451214F062400555DCB /* DiaryDetailHeaderView.swift */; };
 		A501CC52214AFDBF004C432C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501CC51214AFDBF004C432C /* MapViewController.swift */; };
 		A501CC55214B0169004C432C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC54214B0169004C432C /* CoreLocation.framework */; };
 		A501CC57214B0180004C432C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC56214B0180004C432C /* CoreMotion.framework */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B0BA0D9214D039400B71B54 /* DiaryFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFB.swift; sourceTree = "<group>"; };
+		2B0BA0DB214D188200B71B54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2B197451214F062400555DCB /* DiaryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailHeaderView.swift; sourceTree = "<group>"; };
+		52F30406B94D8EE211C47F7F /* Pods_Studio_for_diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_for_diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A501CC51214AFDBF004C432C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A501CC54214B0169004C432C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A501CC56214B0180004C432C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -36,6 +44,8 @@
 		A5AF69C5214A79B2007DAD48 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		A5AF69CD214AB7D9007DAD48 /* TableDiaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDiaryController.swift; sourceTree = "<group>"; };
 		A5AF69CF214AC1DF007DAD48 /* AddNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteController.swift; sourceTree = "<group>"; };
+		DF8A0ABC94FE06367BDC140B /* Pods-Studio for diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio for diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary.release.xcconfig"; sourceTree = "<group>"; };
+		E6317C5A64D0AB05D5F2CA40 /* Pods-Studio for diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio for diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,18 +56,29 @@
 				A501CC59214B018C004C432C /* CoreData.framework in Frameworks */,
 				A501CC57214B0180004C432C /* CoreMotion.framework in Frameworks */,
 				A501CC55214B0169004C432C /* CoreLocation.framework in Frameworks */,
+				1481901252D302860DA04799 /* Pods_Studio_for_diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02F22D7C2B531C55681F495E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E6317C5A64D0AB05D5F2CA40 /* Pods-Studio for diary.debug.xcconfig */,
+				DF8A0ABC94FE06367BDC140B /* Pods-Studio for diary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A501CC53214B0168004C432C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A501CC58214B018C004C432C /* CoreData.framework */,
 				A501CC56214B0180004C432C /* CoreMotion.framework */,
 				A501CC54214B0169004C432C /* CoreLocation.framework */,
+				52F30406B94D8EE211C47F7F /* Pods_Studio_for_diary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -68,6 +89,7 @@
 				A5136842214A656600CA3612 /* Studio for diary */,
 				A5136841214A656600CA3612 /* Products */,
 				A501CC53214B0168004C432C /* Frameworks */,
+				02F22D7C2B531C55681F495E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,12 +106,15 @@
 			children = (
 				A5136843214A656600CA3612 /* AppDelegate.swift */,
 				A5136845214A656600CA3612 /* ViewController.swift */,
+				2B197451214F062400555DCB /* DiaryDetailHeaderView.swift */,
 				A5136847214A656600CA3612 /* Main.storyboard */,
 				A513684A214A656700CA3612 /* Assets.xcassets */,
 				A513684C214A656700CA3612 /* LaunchScreen.storyboard */,
 				A513684F214A656800CA3612 /* Info.plist */,
 				A5AF69C5214A79B2007DAD48 /* CustomTabBarViewController.swift */,
 				A5AF69CD214AB7D9007DAD48 /* TableDiaryController.swift */,
+				2B0BA0D9214D039400B71B54 /* DiaryFB.swift */,
+				2B0BA0DB214D188200B71B54 /* GoogleService-Info.plist */,
 				A5AF69CF214AC1DF007DAD48 /* AddNoteController.swift */,
 				A501CC51214AFDBF004C432C /* MapViewController.swift */,
 			);
@@ -103,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5136852214A656800CA3612 /* Build configuration list for PBXNativeTarget "Studio for diary" */;
 			buildPhases = (
+				D7A8DC36ED22FDC326B6B9E5 /* [CP] Check Pods Manifest.lock */,
 				A513683C214A656600CA3612 /* Sources */,
 				A513683D214A656600CA3612 /* Frameworks */,
 				A513683E214A656600CA3612 /* Resources */,
+				588A72DD0434FA299864DEFF /* [CP] Embed Pods Frameworks */,
+				4C24C40EA247C7A6B9DD27B0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,12 +183,88 @@
 			buildActionMask = 2147483647;
 			files = (
 				A513684E214A656700CA3612 /* LaunchScreen.storyboard in Resources */,
+				2B0BA0DC214D188200B71B54 /* GoogleService-Info.plist in Resources */,
 				A513684B214A656700CA3612 /* Assets.xcassets in Resources */,
 				A5136849214A656600CA3612 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C24C40EA247C7A6B9DD27B0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		588A72DD0434FA299864DEFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studio for diary/Pods-Studio for diary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7A8DC36ED22FDC326B6B9E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Studio for diary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A513683C214A656600CA3612 /* Sources */ = {
@@ -171,7 +275,9 @@
 				A501CC52214AFDBF004C432C /* MapViewController.swift in Sources */,
 				A5AF69D0214AC1DF007DAD48 /* AddNoteController.swift in Sources */,
 				A5136844214A656600CA3612 /* AppDelegate.swift in Sources */,
+				2B0BA0DA214D039400B71B54 /* DiaryFB.swift in Sources */,
 				A5AF69CE214AB7D9007DAD48 /* TableDiaryController.swift in Sources */,
+				2B197452214F062500555DCB /* DiaryDetailHeaderView.swift in Sources */,
 				A5AF69C6214A79B2007DAD48 /* CustomTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +422,7 @@
 		};
 		A5136853214A656800CA3612 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6317C5A64D0AB05D5F2CA40 /* Pods-Studio for diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -336,6 +443,7 @@
 		};
 		A5136854214A656800CA3612 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF8A0ABC94FE06367BDC140B /* Pods-Studio for diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
