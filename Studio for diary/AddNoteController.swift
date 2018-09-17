@@ -19,6 +19,8 @@ class AddNoteController: UIViewController, UITextViewDelegate {
     //@IBAction func saveNote(_ sender: Any) {
         
     override func viewDidDisappear(_ animated: Bool) {
+        
+        if noteTextView.text != "Your new note here ..." {
     
         let db = Firestore.firestore()
         
@@ -26,7 +28,7 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             "date": getCurrentDate() ,
             "time": getCurrentTime() ,
             "comment": noteTextView.text ?? "",
-            "timestamp": NSDate().timeIntervalSince1970,
+            "timestamp": NSDate(),
             "address": address,
             "uID": uid
         ]
@@ -40,7 +42,7 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             }
         }
     
-        
+        }
         
     }
    
@@ -56,6 +58,7 @@ class AddNoteController: UIViewController, UITextViewDelegate {
         
        
     }
+    
     
     func textViewDidBeginEditing(_ noteTextView: UITextView) {
         if noteTextView.textColor == UIColor.lightGray {

@@ -9,12 +9,24 @@
 import UIKit
 import Firebase
 
+class CustomCell: UITableViewCell {
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    
+    
+}
+
 class TableDiaryController: UITableViewController, DataDelegate {
     
     @IBOutlet var table: UITableView!
     
     
     var dataManager = DBManager()
+    
+    
     
     //@IBOutlet weak var loadActivity: UIActivityIndicatorView!
 
@@ -36,7 +48,7 @@ class TableDiaryController: UITableViewController, DataDelegate {
     
     func loadDB() {
         dataManager.EntriesArray.removeAll()
-        dataManager.sortedEntries.removeAll()
+        //dataManager.sortedEntries.removeAll()
         dataManager.loadDB()
     }
     
@@ -50,20 +62,24 @@ class TableDiaryController: UITableViewController, DataDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //return notes.count
-        return dataManager.sortedEntries.count
+        
+        //return dataManager.sortedEntries.count
+        return dataManager.EntriesArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! CustomCell
 
         let row = indexPath.row
+        table.rowHeight = 160
         
-        let entryCell = dataManager.sortedEntries[row]
-        cell.textLabel?.text = entryCell.date
-        
-        cell.detailTextLabel?.text = entryCell.comment
+        //let entryCell = dataManager.sortedEntries[row]
+        let entryCell = dataManager.EntriesArray[row]
+        cell.dateLabel?.text = entryCell.date
+        cell.timeLabel?.text = entryCell.time
+        cell.commentLabel?.text = entryCell.comment
+        cell.addressLabel?.text = entryCell.address
 
         return cell
     }

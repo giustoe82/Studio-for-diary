@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 protocol DataDelegate {
     func loadEntries()
     func loadDB()
@@ -27,9 +28,12 @@ class DBManager {
     
     let userID = Auth.auth().currentUser?.uid
     
+    var EntriesArray:[Entry] = []
+    //var sortedEntries:[Entry] = []
+    var singleEntry = Entry()
     
     struct Entry {
-       
+        var id = ""
         var imgUrl = ""
         var img:UIImage?
         var thumbUrl = ""
@@ -40,24 +44,38 @@ class DBManager {
         //change to lat lon?
         var address = ""
         var uID = ""
-        var timeStamp = 0
+        var timeStamp:NSDate?
     }
-    
-    var EntriesArray:[Entry] = []
-    var sortedEntries:[Entry] = []
-    var singleEntry = Entry()
     
     init() {
+        
     }
+    
+    /*func loadDB() {
+        let db = Firestore.firestore()
+        db.collection("Restaurants").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let qSnapshot = querySnapshot else {return}
+                for document in qSnapshot.documents {
+                    var newRest = Restaurant()
+                    newRest.id = document.documentID
+                    newRest.name = document.data()["name"] as? String ?? ""
+                    newRest.thumbUrl = document.data()["thumb"] as? String ?? ""
+                    self.restaurantArray.append(newRest)
+                }
+                
+                self.dataDel?.laddaTabell()
+                self.loadThumbs()
+            }
+        }
+    }*/
     
     func loadDB() {
         let db = Firestore.firestore()
-        
-            //guard let username = usernameTextField.text else { return }
-            
+        //guard let username = usernameTextField.text else { return }
             guard let uid = Auth.auth().currentUser?.uid else { return }
-            
-    
             db.collection("Entries").whereField("uID", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -65,20 +83,25 @@ class DBManager {
                 guard let qSnapshot = querySnapshot else {return}
                 for document in qSnapshot.documents {
                     var newEntry = Entry()
+                    newEntry.id = document.documentID
                     newEntry.comment = document.data()["comment"] as? String ?? ""
                     newEntry.date = document.data()["date"] as? String ?? ""
-                    newEntry.timeStamp = (document.data()["timeStamp"] as? Int)!
+                    newEntry.time = document.data()["time"] as? String ?? ""
+                    newEntry.timeStamp = document.data()["timestamp"] as? NSDate
                     self.EntriesArray.append(newEntry)
-                    self.sortedEntries = self.EntriesArray.sorted{$0.timeStamp > $1.timeStamp}
-                    
+                }
+                self.EntriesArray.sort(by: { (lhs:Entry, rhs:Entry) -> Bool in
+                    (lhs.timeStamp?.timeIntervalSince1970 ?? 0) > (rhs.timeStamp?.timeIntervalSince1970 ?? 0)
+                })
+                   self.dataDel?.loadEntries()
                     }
                 }
                 
-                self.dataDel?.loadEntries()
+        
                 //self.loadThumbs()
             }
         }
-    }
+
     
    /* func loadOne(restId:String) {
     let db = Firestore.firestore()
