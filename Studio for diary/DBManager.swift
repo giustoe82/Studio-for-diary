@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 
 protocol DataDelegate {
@@ -41,7 +42,8 @@ class DBManager {
         var comment = ""
         var date = ""
         var time = ""
-        //change to lat lon?
+        var lat:Double?
+        var lon:Double?
         var address = ""
         var uID = ""
         var timeStamp:NSDate?
@@ -74,7 +76,6 @@ class DBManager {
     
     func loadDB() {
         let db = Firestore.firestore()
-        //guard let username = usernameTextField.text else { return }
             guard let uid = Auth.auth().currentUser?.uid else { return }
             db.collection("Entries").whereField("uID", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -87,7 +88,13 @@ class DBManager {
                     newEntry.comment = document.data()["comment"] as? String ?? ""
                     newEntry.date = document.data()["date"] as? String ?? ""
                     newEntry.time = document.data()["time"] as? String ?? ""
+                    newEntry.address = document.data()["address"] as? String ?? ""
                     newEntry.timeStamp = document.data()["timestamp"] as? NSDate
+                    newEntry.lat = document.data()["lat"] as? Double ?? nil
+                    newEntry.lon = document.data()["lon"] as? Double ?? nil
+                    
+                   
+                    
                     self.EntriesArray.append(newEntry)
                 }
                 self.EntriesArray.sort(by: { (lhs:Entry, rhs:Entry) -> Bool in
@@ -100,9 +107,22 @@ class DBManager {
         
                 //self.loadThumbs()
             }
-        }
-
     
+    func deleteFromDB(position: Int) {
+        let db = Firestore.firestore()
+        let deleteID = EntriesArray[position].id
+        db.collection("Entries").document(deleteID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+       
+
+}
+}
+
    /* func loadOne(restId:String) {
     let db = Firestore.firestore()
     let docRef = db.collection("Restaurants").document(restId)
@@ -290,3 +310,5 @@ class DBManager {
         }
     }
 }*/
+
+

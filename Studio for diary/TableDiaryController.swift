@@ -84,12 +84,27 @@ class TableDiaryController: UITableViewController, DataDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let Svc = Storyboard.instantiateViewController(withIdentifier: "SingleEntryShowController") as! SingleEntryShowController
+        Svc.getComment = dataManager.EntriesArray[indexPath.row].comment 
+        Svc.getAddress = dataManager.EntriesArray[indexPath.row].address
+        Svc.getDate = dataManager.EntriesArray[indexPath.row].date
+        Svc.getTime = dataManager.EntriesArray[indexPath.row].time
+        Svc.getLat = dataManager.EntriesArray[indexPath.row].lat ?? 0.0
+        Svc.getLon = dataManager.EntriesArray[indexPath.row].lon ?? 0.0
+        
+        self.navigationController?.pushViewController(Svc, animated: true)
+        
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
-            //dataManager.EntriesArray.remove(at: indexPath.row)
+            dataManager.deleteFromDB(position: indexPath.row)
             
+            dataManager.EntriesArray.remove(at: indexPath.row)
             
             table.reloadData()
             
@@ -102,6 +117,8 @@ class TableDiaryController: UITableViewController, DataDelegate {
         tabBarController?.dismiss(animated: true, completion: nil)
         UserDefaults.standard.removeObject(forKey: "uid")
     }
+    
+    
     
 
     /*

@@ -78,6 +78,7 @@ class ViewController: UIViewController {
             downButton.setTitle("Switch to Sign Up", for: .normal)
             repeatPasswordTextField.isHidden = true
             signUpMode = false
+            
         } else {
             topButton.setTitle("Sign Up", for: .normal)
             downButton.setTitle("Switch to Log In", for: .normal)

@@ -8,15 +8,19 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class AddNoteController: UIViewController, UITextViewDelegate {
     
-    var address = ""
+    var address: String?
+    var lat: Double?
+    var lon: Double?
+    
     let uid = Auth.auth().currentUser?.uid
     
     @IBOutlet weak var noteTextView: UITextView!
     
-    //@IBAction func saveNote(_ sender: Any) {
+    
         
     override func viewDidDisappear(_ animated: Bool) {
         
@@ -29,8 +33,10 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             "time": getCurrentTime() ,
             "comment": noteTextView.text ?? "",
             "timestamp": NSDate(),
-            "address": address,
-            "uID": uid
+            "address": address as Any,
+            "lat": lat ?? 0.0,
+            "lon": lon ?? 0.0,
+            "uID": uid!
         ]
         
         
@@ -75,8 +81,11 @@ class AddNoteController: UIViewController, UITextViewDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         self.view.endEditing(true)
     }
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -99,14 +108,14 @@ class AddNoteController: UIViewController, UITextViewDelegate {
         return str
     }
     
-    func getTimeStamp() -> String {
+    /*func getTimeStamp() -> String {
         let formatter = DateFormatter()
         let now = Date()
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let dateString = formatter.string(from: now)
         return dateString
-    }
+    }*/
 
     /*
     // MARK: - Navigation

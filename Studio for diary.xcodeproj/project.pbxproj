@@ -14,6 +14,7 @@
 		A501CC59214B018C004C432C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A501CC58214B018C004C432C /* CoreData.framework */; };
 		A501CC5B214D151C004C432C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A501CC5A214D151C004C432C /* GoogleService-Info.plist */; };
 		A501CC5D214DF601004C432C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501CC5C214DF601004C432C /* DBManager.swift */; };
+		A501CC5F2153D45D004C432C /* SingleEntryShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501CC5E2153D45C004C432C /* SingleEntryShowController.swift */; };
 		A5136844214A656600CA3612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5136843214A656600CA3612 /* AppDelegate.swift */; };
 		A5136846214A656600CA3612 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5136845214A656600CA3612 /* ViewController.swift */; };
 		A5136849214A656600CA3612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5136847214A656600CA3612 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		A501CC58214B018C004C432C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A501CC5A214D151C004C432C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A501CC5C214DF601004C432C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		A501CC5E2153D45C004C432C /* SingleEntryShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntryShowController.swift; sourceTree = "<group>"; };
 		A5136840214A656600CA3612 /* Studio for diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio for diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5136843214A656600CA3612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5136845214A656600CA3612 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A501CC51214AFDBF004C432C /* MapViewController.swift */,
 				A501CC5A214D151C004C432C /* GoogleService-Info.plist */,
 				A501CC5C214DF601004C432C /* DBManager.swift */,
+				A501CC5E2153D45C004C432C /* SingleEntryShowController.swift */,
 			);
 			path = "Studio for diary";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				A5136846214A656600CA3612 /* ViewController.swift in Sources */,
 				A501CC52214AFDBF004C432C /* MapViewController.swift in Sources */,
 				A5AF69D0214AC1DF007DAD48 /* AddNoteController.swift in Sources */,
+				A501CC5F2153D45D004C432C /* SingleEntryShowController.swift in Sources */,
 				A5136844214A656600CA3612 /* AppDelegate.swift in Sources */,
 				A5AF69CE214AB7D9007DAD48 /* TableDiaryController.swift in Sources */,
 				A5AF69C6214A79B2007DAD48 /* CustomTabBarViewController.swift in Sources */,
