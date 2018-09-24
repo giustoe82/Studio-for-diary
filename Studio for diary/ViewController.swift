@@ -9,9 +9,15 @@
 import UIKit
 import Firebase
 
+
+
+/*
+ This class takes care of SIGN UP and LOGIN functions
+ */
 class ViewController: UIViewController {
     
     var signUpMode = true
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -26,7 +32,9 @@ class ViewController: UIViewController {
         }
     
     
-    
+    /*
+     Rules for SIGN UP and LOGIN when the user clicks on the button SIGN UP/LOGIN
+     */
     @IBAction func topTapped(_ sender: Any) {
         
         if emailTextField.text == "" || passwordTextField.text == "" {
@@ -58,6 +66,8 @@ class ViewController: UIViewController {
                                     self.displayAlert(title: "error", message: error!.localizedDescription)
                                 } else {
                                     print("Log In Successful")
+                                    //If LOGIN is successfull the user's details are saved locally in
+                                    //UserDefaults
                                     UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "uid")
                                     self.emailTextField.text = ""
                                     self.passwordTextField.text = ""
@@ -70,7 +80,12 @@ class ViewController: UIViewController {
             }
         }
     }
+  
     
+    /*
+     The lower button rules the appearance of this view through changing the value of the
+     boolean variable "signUpMode"
+     */
     @IBAction func downTapped(_ sender: Any) {
         
         if signUpMode {
@@ -87,27 +102,38 @@ class ViewController: UIViewController {
         }
     }
     
+    /*
+     function for the displayAlert: this is like a template
+     */
     func displayAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    /*
+     Functions "touchesBegan" and "textFieldShouldReturn" regulate keyboard behaviour
+     */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
-        
         return true
     }
     
+    
+    
+    /*
+     After the user LOGGED IN for the first time then he will be redirected to the next view
+     every other time he starts the app
+     */
     override func viewWillAppear(_ animated: Bool) {
         if UserDefaults.standard.value(forKey: "uid") != nil {
             DispatchQueue.main.async() {
-                //Very Interesting!!!!!
+                //Very Interesting!!!!!🤔
                 [unowned self] in
                 self.performSegue(withIdentifier: "Logged", sender: nil)
             }

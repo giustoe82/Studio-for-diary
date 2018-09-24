@@ -25,7 +25,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var address = ""
     var lat:Double?
     var lon:Double?
-    var locationToDisplay: CLLocationCoordinate2D!
+    
     
     
     override func viewDidLoad() {

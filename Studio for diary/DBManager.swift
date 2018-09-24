@@ -30,8 +30,9 @@ class DBManager {
     let userID = Auth.auth().currentUser?.uid
     
     var EntriesArray:[Entry] = []
-    //var sortedEntries:[Entry] = []
+    var filteredEntries:[Entry] = []
     var singleEntry = Entry()
+    
     
     struct Entry {
         var id = ""
@@ -53,26 +54,7 @@ class DBManager {
         
     }
     
-    /*func loadDB() {
-        let db = Firestore.firestore()
-        db.collection("Restaurants").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                guard let qSnapshot = querySnapshot else {return}
-                for document in qSnapshot.documents {
-                    var newRest = Restaurant()
-                    newRest.id = document.documentID
-                    newRest.name = document.data()["name"] as? String ?? ""
-                    newRest.thumbUrl = document.data()["thumb"] as? String ?? ""
-                    self.restaurantArray.append(newRest)
-                }
-                
-                self.dataDel?.laddaTabell()
-                self.loadThumbs()
-            }
-        }
-    }*/
+    
     
     func loadDB() {
         let db = Firestore.firestore()
@@ -83,19 +65,20 @@ class DBManager {
             } else {
                 guard let qSnapshot = querySnapshot else {return}
                 for document in qSnapshot.documents {
-                    var newEntry = Entry()
-                    newEntry.id = document.documentID
-                    newEntry.comment = document.data()["comment"] as? String ?? ""
-                    newEntry.date = document.data()["date"] as? String ?? ""
-                    newEntry.time = document.data()["time"] as? String ?? ""
-                    newEntry.address = document.data()["address"] as? String ?? ""
-                    newEntry.timeStamp = document.data()["timestamp"] as? NSDate
-                    newEntry.lat = document.data()["lat"] as? Double ?? nil
-                    newEntry.lon = document.data()["lon"] as? Double ?? nil
-                    
+                    self.singleEntry = Entry()
+                    self.singleEntry.id = document.documentID
+                    self.singleEntry.comment = document.data()["comment"] as? String ?? ""
+                    self.singleEntry.date = document.data()["date"] as? String ?? ""
+                    self.singleEntry.time = document.data()["time"] as? String ?? ""
+                    self.singleEntry.address = document.data()["address"] as? String ?? ""
+                    self.singleEntry.timeStamp = document.data()["timestamp"] as? NSDate
+                    self.singleEntry.lat = document.data()["lat"] as? Double ?? nil
+                    self.singleEntry.lon = document.data()["lon"] as? Double ?? nil
+                    self.singleEntry.imgUrl = document.data()["img"] as? String ?? ""
                    
+                    self.loadImage(imgUrl: self.singleEntry.imgUrl)
                     
-                    self.EntriesArray.append(newEntry)
+                    self.EntriesArray.append(self.singleEntry)
                 }
                 self.EntriesArray.sort(by: { (lhs:Entry, rhs:Entry) -> Bool in
                     (lhs.timeStamp?.timeIntervalSince1970 ?? 0) > (rhs.timeStamp?.timeIntervalSince1970 ?? 0)
@@ -118,10 +101,49 @@ class DBManager {
                 print("Document successfully removed!")
             }
         }
-       
-
+    }
+    
+    func uploadImage(imgName: String) {
+        if let image = singleEntry.img, let jpegData = image.jpegData(compressionQuality: 0.7) {
+            let storageRef = Storage.storage().reference()
+            let imgRef = storageRef.child(imgName + ".jpg")
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            imgRef.putData(jpegData, metadata: metadata) { (metadata, error) in
+                guard metadata != nil else {
+                    print(error!)
+                    return
+            }
+            print("Image uploaded")
+                
+        }
+    }
+    
 }
-}
+    
+    func loadImage(imgUrl:String) {
+        
+        let storageRef =  Storage.storage().reference()
+        let imgRef = storageRef.child(imgUrl)
+        imgRef.getData(maxSize: 2048*2048) { data, error in
+            if let error = error {
+                print("\(error)")
+            } else {
+                if let imgData = data {
+                    
+                    if let myImg = UIImage(data: imgData) {
+                        print("il file esiste")
+                        self.singleEntry.img = myImg
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
 
    /* func loadOne(restId:String) {
     let db = Firestore.firestore()
@@ -312,3 +334,4 @@ class DBManager {
 }*/
 
 
+}

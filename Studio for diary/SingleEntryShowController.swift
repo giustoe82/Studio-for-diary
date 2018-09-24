@@ -15,6 +15,7 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var imageField: UIImageView!
     
     var getComment = String()
     var getAddress = String()
@@ -22,6 +23,7 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
     var getTime = String()
     var getLat = Double()
     var getLon = Double()
+    var getImage = UIImage()
     
     
     
@@ -33,6 +35,7 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
         dateTimeLabel.text = getDate + " at " + getTime
         commentLabel.text = getComment
         addressLabel.text = getAddress
+        imageField.image = getImage
         print(getLat)
         
             
