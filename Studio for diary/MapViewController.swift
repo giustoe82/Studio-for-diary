@@ -2,8 +2,8 @@
 //  MapViewController.swift
 //  Studio for diary
 //
-//  Created by Marco Giustozzi on 2018-09-13.
-//  Copyright © 2018 marcog. All rights reserved.
+//  Created by Marco Giustozzi, Aleks Edholm, Aleksander Frostelén on 2018-09-23.
+//  Copyright © 2018 Group g. All rights reserved.
 //
 
 import UIKit

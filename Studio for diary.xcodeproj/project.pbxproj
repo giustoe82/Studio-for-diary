@@ -20,7 +20,6 @@
 		A5136846214A656600CA3612 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5136845214A656600CA3612 /* ViewController.swift */; };
 		A5136849214A656600CA3612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5136847214A656600CA3612 /* Main.storyboard */; };
 		A513684B214A656700CA3612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A513684A214A656700CA3612 /* Assets.xcassets */; };
-		A513684E214A656700CA3612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513684C214A656700CA3612 /* LaunchScreen.storyboard */; };
 		A5AF69C6214A79B2007DAD48 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF69C5214A79B2007DAD48 /* CustomTabBarViewController.swift */; };
 		A5AF69CE214AB7D9007DAD48 /* TableDiaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF69CD214AB7D9007DAD48 /* TableDiaryController.swift */; };
 		A5AF69D0214AC1DF007DAD48 /* AddNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF69CF214AC1DF007DAD48 /* AddNoteController.swift */; };
@@ -184,7 +183,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A513684E214A656700CA3612 /* LaunchScreen.storyboard in Resources */,
 				A501CC5B214D151C004C432C /* GoogleService-Info.plist in Resources */,
 				A513684B214A656700CA3612 /* Assets.xcassets in Resources */,
 				A5136849214A656600CA3612 /* Main.storyboard in Resources */,

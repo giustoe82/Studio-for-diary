@@ -17,7 +17,18 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUg-LE-BjD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AUg-LE-BjD" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="2yA-of-1DA"/>
+                            <constraint firstItem="AUg-LE-BjD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3H0-f3-P4T"/>
+                            <constraint firstItem="AUg-LE-BjD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="E2v-Xd-lMn"/>
+                            <constraint firstItem="AUg-LE-BjD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wEG-Ru-cqU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
