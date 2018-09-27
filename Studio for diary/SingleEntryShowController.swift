@@ -87,8 +87,6 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
         
     }
     
-    
-    
     //fetching image from storage
     func loadImage(imgUrl:String)  {
         

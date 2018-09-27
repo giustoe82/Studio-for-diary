@@ -221,7 +221,6 @@ class AddNoteController: UIViewController, UITextViewDelegate, UIImagePickerCont
             dataDict["thumb"] = imgName + "_thumb.jpg"
         }
         
-        
         db.collection("Entries").document().setData(dataDict) { err in
             if let err = err {
                 print("Error: \(err)")
