@@ -14,7 +14,7 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
     
     //Fields of the tableView
     @IBOutlet weak var dateTimeLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentLabel: UITextView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var imageField: UIImageView!

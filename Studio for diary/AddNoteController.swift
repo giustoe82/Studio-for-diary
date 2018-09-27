@@ -71,8 +71,9 @@ class AddNoteController: UIViewController, UITextViewDelegate, UIImagePickerCont
             
             uploadData()
             noteTextView.text = "Saving data ..."
+            noteTextView.isEditable = false
             noteTextView.textColor = UIColor.red
-            self.noteTextView.allowsEditingTextAttributes = false
+            
             
             
         }
@@ -90,7 +91,7 @@ class AddNoteController: UIViewController, UITextViewDelegate, UIImagePickerCont
         noteTextView.delegate = self
         noteTextView.text = "Your new note here ..."
         noteTextView.textColor = UIColor.lightGray
-        noteTextView.allowsEditingTextAttributes = true
+        noteTextView.isEditable = true
     
     }
     
@@ -232,7 +233,7 @@ class AddNoteController: UIViewController, UITextViewDelegate, UIImagePickerCont
                     self.doneButton.hidesBackButton = false
                     self.noteTextView.text = "Entry saved! Go back"
                     self.noteTextView.textColor = UIColor.green
-                    self.noteTextView.allowsEditingTextAttributes = false
+                    self.noteTextView.isEditable = false
                 }
             }
         }
