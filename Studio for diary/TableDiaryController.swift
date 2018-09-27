@@ -29,13 +29,14 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
     @IBOutlet var table: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
+    //connection to database class
     var dataManager = DBManager()
     
     //This boolean var defines if the search field is active or not and therefore it defines
     //from which array we fetch datas
     var isSearching = false
     
-    //@IBOutlet weak var loadActivity: UIActivityIndicatorView!
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,16 +45,18 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
         
     }
     
+    //loading data from database in viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         loadDB()
-        //loadEntries()
+        loadEntries()
     }
     
+    //this function is here only to make the protocol in DBManager work
     func loadEntries() {
         table.reloadData()
-        //loadActivity.isHidden = true
     }
     
+    //this function is here only to make the protocol in DBManager work
     func loadDB() {
         dataManager.EntriesArray.removeAll()
         dataManager.filteredEntries.removeAll()
@@ -85,7 +88,9 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
         let row = indexPath.row
         table.rowHeight = 160
         
+        
         if isSearching == false {
+            
         let entryCell = dataManager.EntriesArray[row]
             cell.dateLabel?.text = entryCell.date
             cell.timeLabel?.text = entryCell.time
@@ -100,7 +105,7 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
             cell.addressLabel?.text = entryCell.address
             cell.imageInTable?.image = entryCell.thumb
         }
-        print(dataManager.EntriesArray)
+        
         return cell
         
     }
@@ -117,7 +122,9 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
             table.reloadData()
         } else {
             isSearching = true
-            dataManager.filteredEntries = dataManager.EntriesArray.filter { $0.comment.localizedCaseInsensitiveContains( searchText ) ||
+            //search criteria are comment and date
+            dataManager.filteredEntries = dataManager.EntriesArray.filter
+                { $0.comment.localizedCaseInsensitiveContains( searchText ) ||
                 $0.date.localizedCaseInsensitiveContains( searchText )
             }
             table.reloadData()
@@ -168,6 +175,8 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
+            dataManager.deleteImage(position: indexPath.row)
+            dataManager.deleteThumb(position: indexPath.row)
             dataManager.deleteFromDB(position: indexPath.row)
             dataManager.EntriesArray.remove(at: indexPath.row)
             table.reloadData()
@@ -175,10 +184,28 @@ class TableDiaryController: UITableViewController, DataDelegate,  UISearchBarDel
     }
     
     
-    @IBAction func logOut(_ sender: Any) {
+    
+    /*
+     LOG OUT
+     */
+    func displayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.logOut()
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func logOut() {
         try? Auth.auth().signOut()
         tabBarController?.dismiss(animated: true, completion: nil)
         UserDefaults.standard.removeObject(forKey: "uid")
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+         displayAlert(title: "Logging Out", message: "Do you want to Log Out?")
     }
 
 }

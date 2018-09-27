@@ -14,6 +14,7 @@ import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    //variables that will compose the address string
     var thoroughfare = ""
     var subThoroughfare = ""
     var subAdministritiveArea = ""
@@ -23,6 +24,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager = CLLocationManager()
     
     var address = ""
+    //variables that will be used in SingleEntryShowController to create the annotation
+    //in that mapView
     var lat:Double?
     var lon:Double?
     
@@ -33,19 +36,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let coord = manager.location?.coordinate {
-            
+            locationManager.stopUpdatingLocation()
+            //fetching actual coordinates
             let center = CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
             myMap.setRegion(region, animated: true)
@@ -57,12 +61,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let userLocation =  CLLocation(latitude: center.latitude, longitude: center.longitude)
             
+            //Creating the address string
             CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
-                
                 if error != nil {
-                    
                     print(error!)
-                    
                 } else {
                     
                     if let placemark = placemarks?[0] {
@@ -103,34 +105,54 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        manager.stopUpdatingLocation()
-        manager.requestLocation()
-    }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        locationManager.stopUpdatingLocation()
-        print(address)
-        address = ""
-    }
-    
-    @IBAction func logOut(_ sender: Any) {
-        try? Auth.auth().signOut()
-        tabBarController?.dismiss(animated: true, completion: nil)
-    }
-    
+    //adding coordinates and address when the user creates a new entry from this view
     @IBAction func toNote(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "toNotes", sender: address)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is AddNoteController {
             let vc = segue.destination as? AddNoteController
-            vc?.address = address
-            vc?.lat = lat
-            vc?.lon = lon
+            vc?.myAddress = address
+            vc?.myLat = lat
+            vc?.myLon = lon
         }
+    }
+    
+    
+    //in case there is an error when fetching user's position
+ /*   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        manager.stopUpdatingLocation()
+        manager.requestLocation()
+    }*/
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        //resetting address string
+        address = ""
+    }
+    
+    /*
+     LOG OUT
+     */
+    func displayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.logOut()
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func logOut() {
+        try? Auth.auth().signOut()
+        tabBarController?.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "uid")
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+       displayAlert(title: "Logging Out", message: "Do you want to Log Out?")
     }
     
 }
