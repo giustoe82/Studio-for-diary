@@ -51,7 +51,7 @@ class SingleEntryShowController: UITableViewController, MKMapViewDelegate {
             annotation.title = "Entry taken here"
             map.addAnnotation(annotation)
     
-}
+    }
     
     /*
      Setting up cells' height to dynamically adjust themselves depending on which data
